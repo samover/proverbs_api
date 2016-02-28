@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 var assert = require("assert");
-var config = require("./config");
+var config = require("../config");
 var fs = require("fs");
 var data = require('./proverbs.json');
 
@@ -13,6 +13,7 @@ var proverbSchema = new Schema({
 
 var Proverb = mongoose.model('Proverb', proverbSchema)
 
+Proverb.collection.drop();
 Proverb.collection.insert(data, function(err, proverbs) {
   if (err) {
     console.log(err)
